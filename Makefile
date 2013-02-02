@@ -1,4 +1,4 @@
-Files=README_lab.pdf README_konsp.pdf #index_konsp.pdf
+Files=README_konsp.pdf README_lab.pdf #index_konsp.pdf
 
 Pandoc=pandoc
 
@@ -9,13 +9,13 @@ all: $(Files)
 	$(Pandoc) $< -o $@ \
 	--latex-engine=xelatex \
 	--variable=geometry:margin=0.5in \
-	-H build_markdown/title.sty 
+	-H .build_markdown/title.sty 
 	
 %_lab.tex: %.md
 	$(Pandoc) $< -o $@ \
 	--latex-engine=xelatex \
 	--variable=geometry:margin=0.5in \
-	-H build_markdown/title.sty
+	-H .build_markdown/title.sty
 
 #Tradicionāls html fails	
 %.html: %.md
