@@ -21,6 +21,7 @@ all: $(Files)
 %.html: %.md
 	$(Pandoc) $< -o $@ -m \
 	-c http://johnmacfarlane.net/pandoc/demo/pandoc.css \
+	--indented-code-classes=python \
 	-s -S --toc #Uztaisa satura rādītāju
 
 #Statistiskā apstrāde konspekts + labojums savietojamībai ar laboru	
@@ -28,14 +29,16 @@ all: $(Files)
 	$(Pandoc) $< -o $@ \
 	--latex-engine=xelatex \
 	-V header-includes:"\usepackage{csvsimple}" \
-	-V geometry:margin=0.5in 
+	-V geometry:margin=0.5in  \
+	--indented-code-classes=python
 	#-V fontsize:12pt 
 	
 %_konsp.tex: %md
 	$(Pandoc) $< -o $@ \
 	--latex-engine=xelatex \
 	-V header-includes:"\usepackage{csvsimple}" \
-	-V geometry:margin=0.5in 
+	-V geometry:margin=0.5in \
+	--indented-code-classes=python
 
 #letter
 %_letter.pdf: %.md
