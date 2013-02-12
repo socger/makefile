@@ -2,3 +2,4 @@
 *.tex
 *.html
 *.pdf
+!.build_markdown/LU_logo.pdf
