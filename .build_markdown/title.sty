@@ -1,6 +1,12 @@
 %
-\usepackage{graphicx}
-\let\Oldincludegraphics\includegraphics
+
+%lielas probleemas
+\usepackage{etoolbox}
+\ifdef{\Oldincludegraphics}{}{
+	\usepackage{graphicx}
+	\let\Oldincludegraphics\includegraphics
+}
+ 
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=0.8\maxwidth]{#1}}
 
 % Recepte, lai labi izvietotu figūras
