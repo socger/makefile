@@ -1,6 +1,7 @@
-Files=README_konsp.pdf README_lab.pdf #index_konsp.pdf
+Files= README_lab.pdf README_konsp.pdf#index_konsp.pdf
 
 Pandoc=pandoc
+
 
 all: $(Files)
 
@@ -28,15 +29,15 @@ all: $(Files)
 %_konsp.pdf: %.md
 	$(Pandoc) $< -o $@ \
 	--latex-engine=xelatex \
-	-V header-includes:"\usepackage{csvsimple}" \
 	-V geometry:margin=0.5in  \
-	--indented-code-classes=python
+	--indented-code-classes=python \
+	-H .build_markdown/content.sty
 	#-V fontsize:12pt 
 	
 %_konsp.tex: %md
 	$(Pandoc) $< -o $@ \
 	--latex-engine=xelatex \
-	-V header-includes:"\usepackage{csvsimple}" \
+	-H .build_markdown/content.sty \
 	-V geometry:margin=0.5in \
 	--indented-code-classes=python
 
